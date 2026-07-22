@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Practice-4-A</title>
+
+    <style>
+      .on-btn, .off-btn {
+        background-color: rgb(25, 135, 84);
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-size: 1rem;
+        border: none;
+        color: white;
+      }
+
+      .off-btn {
+        background-color: rgb(220, 53, 69);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+     
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/chatbot.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+      function OnBtn({ isButtonOn, setIsButtonOn }) {
+        function toggleBtn() {
+          setIsButtonOn(!isButtonOn);
+        }
+
+        return (
+          <button 
+            className={isButtonOn ? "on-btn" : "off-btn" }
+            onClick={toggleBtn}
+          >
+            {isButtonOn ? "ON" : "OFF"}
+          </button>
+        );
+      }      
+
+      function App() {
+        const [isButtonOn, setIsButtonOn] = React.useState(true);
+
+        return (
+          <>
+            <OnBtn 
+              isButtonOn={isButtonOn}
+              setIsButtonOn={setIsButtonOn}
+            />
+          </>
+        );
+      }
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>

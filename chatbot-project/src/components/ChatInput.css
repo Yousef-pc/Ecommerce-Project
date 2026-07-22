@@ -1,0 +1,27 @@
+.send-button, .clear-button {
+  background-color: rgb(25, 135, 84);
+  font-size: 1rem;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 1rem;
+  margin-left: 10px;
+}
+
+.clear-button {
+  background-color: rgb(238, 238, 238);
+  color: black;
+}
+
+.chat-input {
+  flex: 1;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border-width: 1px;
+  font-size: 1rem;
+}
+
+.chat-input-container {
+  display: flex;
+  margin-bottom: 60px;
+}

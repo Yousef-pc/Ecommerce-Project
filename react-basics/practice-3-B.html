@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Practice-3-B</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+     
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/chatbot.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+      function Input({ name, setName }) {
+
+        function trackInput(event) {
+          const inputText = event.target.value;
+
+          setName(inputText);
+        }
+
+        return (
+          <input 
+            onChange={trackInput}
+            value={name}
+          />
+        );
+      }
+
+      function Text({ name }) {
+        return (
+          <p>Hello {name}</p>
+        );
+      }
+
+      function ResetBtn({ setName }) {
+
+        return (
+          <button
+            onClick={() => {
+              setName("");
+            }}
+          >
+            Reset  
+          </button>
+        );
+      }
+
+      function ExampleBtn({ setName }) {
+
+        return (
+          <button
+            onClick={() => {
+              const randomNum = Math.random();
+              let randomName = "";
+              
+              if (randomNum < 0.33) {
+                randomName = "Alice";
+              } else if (randomNum >= 0.33 && randomNum < 0.66) {
+                randomName = "Mohammad";
+              } else {
+                randomName = "Simon";
+              }
+              
+              setName(randomName);
+            }}
+          >
+            Example  
+          </button>
+        );
+      }
+
+      function App() {
+        const [name, setName] = React.useState("");
+
+        return (
+          <>
+            <Input
+              name={name}
+              setName={setName}
+            />
+            <ResetBtn 
+              setName={setName}
+            />
+            <ExampleBtn 
+              setName={setName}
+            />
+            <Text
+              name={name}
+            />
+          </>
+        );
+      }
+
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>

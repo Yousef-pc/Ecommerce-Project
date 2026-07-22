@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Practice-3</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+     
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/chatbot.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+      function CountBtn({ count, setCount }) {
+
+        return (
+          <button
+            onClick={() => {
+              setCount(count + 1)
+            }}
+          >
+            Clicked {count} {count === 1 ? "time" : "times"}
+          </button>
+        );
+      }
+
+      function Reset({ count, setCount }) {
+
+        return (
+          <button
+            onClick={() => {
+              setCount(0);
+            }}
+          >
+            Reset
+          </button>
+        );
+      }
+
+      function App() {
+        const [count, setCount] = React.useState(
+          0
+        );
+
+        return (
+          <>
+            <CountBtn 
+              count={count}
+              setCount={setCount}
+            />
+            <CountBtn
+              count={count}
+              setCount={setCount}
+            />
+            <Reset 
+              count={count}
+              setCount={setCount}
+            />
+          </>
+        );
+      }
+
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>

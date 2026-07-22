@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>practice-4-B</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial;
+      }
+
+      .app-container {
+        background-color: rgb(222, 222, 222);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .btn, .red-btn {
+        background-color: rgb(25, 135, 84);
+        border: none;
+        border-radius: 12px;
+        padding: 12px 20px;
+        color: white;
+        font-size: 1rem;
+      }
+
+      .red-btn {
+        background-color: rgb(220, 53, 69);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+     
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+      function App() {
+        const [clickedNum, setClickedNum] = React.useState(0);
+        const btnElem = React.useRef(null);
+        const [isAutoClicking, setIsAutoClicking] = React.useState(false);
+        const intervalRef = React.useRef(null);
+
+        function increaseNum() {
+          setClickedNum(clickedNum + 1);
+        }
+
+        function resetNum() {
+          setClickedNum(0);
+        }
+
+        console.log(btnElem);
+        
+        function autoClick() {
+          if (!isAutoClicking) {
+            intervalRef.current = setInterval(() => {
+              btnElem.current.click();
+            }, 1000);
+            setIsAutoClicking(!isAutoClicking);
+          } else if (isAutoClicking) {
+            setIsAutoClicking(!isAutoClicking);
+            clearInterval(intervalRef.current);
+          }
+        }
+
+        return (
+          <div className="app-container">
+            <button
+              onClick={increaseNum}
+              ref={btnElem}
+              className="btn"
+            >
+              Clicked {clickedNum} {clickedNum === 1 ? "time" : "times"}
+            </button>
+            <button onClick={resetNum} className="btn">
+              Reset  
+            </button>
+            <button onClick={autoClick} className={!isAutoClicking ? "btn" : "red-btn"}>
+              {!isAutoClicking ? "Auto Click" : "Stop Auto Click"}
+            </button>
+          </div>
+        );
+      }
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>

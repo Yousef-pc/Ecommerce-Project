@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>practice-4-B</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial;
+      }
+
+      body {
+        padding: 0 0 0 10px;
+      }
+
+      .header-text {
+        font-size: 2rem;
+        font-weight: 500;
+        margin-top: 20px;
+        margin-bottom: 25px;
+      }
+
+      .email-input, .password-input {
+        width: 300px;
+        padding: 12px 20px;
+        border-width: 1.5px;
+        border-radius: 6px;
+        margin-bottom: 10px;
+      }
+
+      .password-input {
+        margin-bottom: 20px;
+      }
+
+      .login-btn, .singup-btn {
+        background-color: rgb(0, 123, 255);
+        border: none;
+        padding: 12px 20px;
+        color: white;
+        border-radius: 10px;
+        font-size: 1rem;
+        margin-right: 8px;
+      }
+
+      .show-hide-btn {
+        width: 75px;
+        padding: 8px 14px;
+        border-width: 1.5px;
+        border-radius: 6px;
+        margin-bottom: 10px;
+        margin-left: 6px;
+        font-size: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+     
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+      function LoginForm({ isPassVisible, setIsPassVisible }) {
+        function showOrHidePass() {
+          setIsPassVisible(!isPassVisible);
+        }
+
+        return (
+          <>
+            <div>
+              <input type="email" placeholder="Email" className="email-input" />
+            </div>
+            <div>
+              <input type={isPassVisible ? "password" : "text"} placeholder="Password" className="password-input" />
+              <button onClick={showOrHidePass} className="show-hide-btn">
+                {isPassVisible ? "Show" : "Hide"}
+              </button>
+            </div>
+            <button className="login-btn">Login</button>
+            <button className="singup-btn">Sing up</button>
+          </>
+        );
+      }
+
+      function App() {
+        const [isPassVisible, setIsPassVisible] = React.useState(true)
+
+        return (
+          <>
+            <p className="header-text">Hello, welcome to my website</p>
+            <LoginForm 
+              isPassVisible={isPassVisible}
+              setIsPassVisible={setIsPassVisible}
+            />
+          </>
+        );
+      }
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>

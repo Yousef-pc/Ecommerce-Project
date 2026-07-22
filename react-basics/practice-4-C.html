@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>practice-4-B</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+     
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+      function CurentTime() {
+        const [time, setTime] = React.useState(dayjs().format('HH,mm,ss'));
+
+        React.useEffect(() => {
+          const interval = setInterval(() => {
+            setTime(dayjs().format('HH,mm,ss'));
+          }, 1000);
+
+          return () => clearInterval(interval); // cleanup!
+        }, []);
+        return (
+          <p>Current time: {time}</p>
+        );
+      }
+
+      function App() {
+        return (
+          <>
+            <CurentTime />
+          </>
+        );
+      }
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>

@@ -10,3 +10,13 @@ Currently, two official plugins are available:
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+In this lesson (6):
+
+1. Started the Ecommerce project using React and Vite  
+2. Git = track changes in our code  
+3. Routing = create multiple pages in React  
+4. Created the HomePage, CheckoutPage, OrdersPage  
+5. Updated all the links to work with routing  
+6. Separated the Header into a component

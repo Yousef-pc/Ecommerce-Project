@@ -4,6 +4,8 @@ import './HomePage.css'
 export function HomePage() {
     return (
       <>
+        <link rel="icon" to="/images/home-favicon.png" />
+
         <title>Ecommerce Project</title>
 
         <Header />
@@ -50,7 +52,7 @@ export function HomePage() {
               <div className="product-spacer"></div>
 
               <div className="added-to-cart">
-                <img src="images/icons/checkmark.png" />
+                <img src="../assets/images/icons/checkmark.png" />
                 Added
               </div>
 
@@ -99,7 +101,7 @@ export function HomePage() {
               <div className="product-spacer"></div>
 
               <div className="added-to-cart">
-                <img src="images/icons/checkmark.png" />
+                <img src="../assets/images/icons/checkmark.png" />
                 Added
               </div>
 
@@ -148,7 +150,7 @@ export function HomePage() {
               <div className="product-spacer"></div>
 
               <div className="added-to-cart">
-                <img src="images/icons/checkmark.png" />
+                <img src="../assets/images/icons/checkmark.png" />
                 Added
               </div>
 

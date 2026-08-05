@@ -1,11 +1,12 @@
 import { Link } from 'react-router';
 import { Header } from '../components/Header';
 import './HomePage.css'
+import checkmarkImg from '../assets/images/icons/checkmark.png';
 
 export function HomePage() {
     return (
       <>
-        <link rel="icon" to="/images/home-favicon.png" />
+        <link rel="icon" href="/images/home-favicon.png" />
 
         <title>Ecommerce Project</title>
 
@@ -53,7 +54,7 @@ export function HomePage() {
               <div className="product-spacer"></div>
 
               <div className="added-to-cart">
-                <img src="../assets/images/icons/checkmark.png" />
+                <img src={checkmarkImg} />
                 Added
               </div>
 
@@ -102,7 +103,7 @@ export function HomePage() {
               <div className="product-spacer"></div>
 
               <div className="added-to-cart">
-                <img src="../assets/images/icons/checkmark.png" />
+                <img src={checkmarkImg} />
                 Added
               </div>
 
@@ -151,7 +152,7 @@ export function HomePage() {
               <div className="product-spacer"></div>
 
               <div className="added-to-cart">
-                <img src="../assets/images/icons/checkmark.png" />
+                <img src={checkmarkImg} />
                 Added
               </div>
 

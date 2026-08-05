@@ -1,0 +1,11 @@
+.not-found-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.not-found-text {
+  font-size: 3Rem;
+  color: rgb(73, 71, 71);
+}

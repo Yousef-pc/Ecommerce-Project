@@ -10,12 +10,12 @@ export function HomePage() {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/products')
+    axios.get('/api/products')
       .then((response) => {
         setProducts(response.data);
       });
 
-    axios.get('http://localhost:3000/api/cart-items')
+    axios.get('/api/cart-items')
       .then((response) => {
         setCart(response.data);
       })
@@ -52,7 +52,7 @@ export function HomePage() {
                 </div>
 
                 <div className="product-price">
-                  ${(product.priceCents * 100).toFixed(2)}
+                  ${(product.priceCents / 100).toFixed(2)}
                 </div>
 
                 <div className="product-quantity-container">

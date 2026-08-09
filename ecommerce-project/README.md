@@ -20,3 +20,14 @@ In this lesson (6):
 4. Created the HomePage, CheckoutPage, OrdersPage  
 5. Updated all the links to work with routing  
 6. Separated the Header into a component
+
+
+In this lesson (7):
+
+1. Backend = manages the data  
+2. Set up a backend for our project  
+3. Data Fetching  
+4. axios = easier way to make requests to the backend  
+5. Generate the HTML using data from the backend  
+6. Separated into smaller components  
+7. Async Await = write asynchronous code like normal code

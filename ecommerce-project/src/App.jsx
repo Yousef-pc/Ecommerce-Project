@@ -12,11 +12,13 @@ function App() {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/cart-items?expand=product') // This is called a Query Parameter, which lets us add additional info to our request.
-      .then((response) => {
-        setCart(response.data);
-      })
-  }, [])
+    const fetchAppData = async () => {
+      const response = await axios.get('/api/cart-items?expand=product'); // This is called a Query Parameter, which lets us add additional info to our request.
+      setCart(response.data);
+    }
+
+    fetchAppData();
+  }, []);
 
   return (
     <Routes>

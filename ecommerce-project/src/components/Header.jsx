@@ -6,11 +6,13 @@ import searchIconImg from '../assets/images/icons/search-icon.png';
 import cartIconImg from '../assets/images/icons/cart-icon.png';
 
 export function Header({ cart }) {
+  if (cart === undefined) return;
+
   let totalQuantity = 0;
 
   cart.forEach((cartItem) => {
     totalQuantity += cartItem.quantity;
-  })
+  });
 
   return (
     <div className="header">

@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { OrdersGridHeader } from "./OrdersGridHeader";
 import { OrdersGridDetails } from "./OrdersGridDetails";
 
-export function OrdersGrid({ orders }) {
+export function OrdersGrid({ orders, cart }) {
   return (
     <div className="orders-grid">
       {orders.map((order) => {
@@ -12,7 +12,7 @@ export function OrdersGrid({ orders }) {
 
             <OrdersGridHeader order={order} />
 
-            <OrdersGridDetails order={order} />
+            <OrdersGridDetails order={order} cart={cart} />
           </div>
         );
       })}

@@ -31,3 +31,14 @@ In this lesson (7):
 5. Generate the HTML using data from the backend  
 6. Separated into smaller components  
 7. Async Await = write asynchronous code like normal code
+
+
+In this lesson (8):
+
+1. Data Mutation = update data in the backend  
+2. Types of requests: GET, POST, PUT, DELETE  
+3. POST request: add products to the cart, create an order  
+4. PUT request: update the cart  
+5. DELETE request: delete a product from the cart  
+6. Dependency Array to update the payment summary  
+7. useNavigate = navigate to another page using our code

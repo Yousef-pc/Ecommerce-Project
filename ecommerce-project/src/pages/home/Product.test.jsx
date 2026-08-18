@@ -26,7 +26,7 @@ describe('Product component', () => {
     }
 
     loadCart = vi.fn(); // This fake function is called a mock.
-  })
+  });
 
   it('displays the products correctly', () => {
     render(<Product product={product} loadCart={loadCart} />);
@@ -68,5 +68,14 @@ describe('Product component', () => {
     );
 
     expect(loadCart).toHaveBeenCalled(); // So this test and the above test are User Interaction Tests.
-  })
+  });
+
+  it("can select a quantity", () => {
+    render(<Product product={product} loadCart={loadCart} />);
+    const quantitySelector = screen.getByTestId('quantity-selector');
+
+    expect(
+      quantitySelector
+    ).toHaveValue('1');
+  });
 });

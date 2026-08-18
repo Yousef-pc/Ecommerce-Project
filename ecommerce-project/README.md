@@ -42,3 +42,14 @@ In this lesson (8):
 5. DELETE request: delete a product from the cart  
 6. Dependency Array to update the payment summary  
 7. useNavigate = navigate to another page using our code
+
+
+In this lesson (9):
+
+1. Automated tests with Vitest  
+2. Unit test = test 1 piece of the code  
+3. it(), expect(), describe()  
+4. Integration tests = test multiple pieces of code  
+5. Test a component (using render and screen)  
+6. Mock = fake version of a function / package  
+7. Mock the implementation = make a mock do whatever we want

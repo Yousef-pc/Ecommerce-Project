@@ -13,5 +13,8 @@ export default defineConfig({
         target: 'http://localhost:3000'
       }
     }
-  } // this is called a Server Proxy Configuration.
+  }, // this is called a Server Proxy Configuration.
+  build: {
+    outDir: '../ecommerce-backend/dist'
+  }
 })

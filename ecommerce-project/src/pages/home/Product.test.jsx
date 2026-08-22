@@ -11,6 +11,7 @@ vi.mock('axios'); // This mock the whole npm pakage, so whenever we use that fro
 describe('Product component', () => {
   let product;
   let loadCart; // This fake function is called a mock.
+  let user;
 
   beforeEach(() => { // beforeEach is a Test Hook.
     product = {
@@ -26,6 +27,8 @@ describe('Product component', () => {
     }
 
     loadCart = vi.fn(); // This fake function is called a mock.
+
+    user = userEvent.setup();
   });
 
   it('displays the products correctly', () => {
@@ -55,7 +58,6 @@ describe('Product component', () => {
   it('adds a product to the cart', async () => {
     render(<Product product={product} loadCart={loadCart} />);
 
-    const user = userEvent.setup();
     const addToCartButton = screen.getByTestId('add-to-cart-button');
     await user.click(addToCartButton); // Clicking the button using this method takes some time. So this is an asynchronous code.
 
@@ -70,12 +72,31 @@ describe('Product component', () => {
     expect(loadCart).toHaveBeenCalled(); // So this test and the above test are User Interaction Tests.
   });
 
-  it("can select a quantity", () => {
+  it("can select a quantity and add it to the cart", async () => {
     render(<Product product={product} loadCart={loadCart} />);
-    const quantitySelector = screen.getByTestId('quantity-selector');
+    const quantitySelectorElement = screen.getByTestId('quantity-selector');
 
     expect(
-      quantitySelector
+      quantitySelectorElement
     ).toHaveValue('1');
+
+    await user.selectOptions(quantitySelectorElement, '3');
+
+    expect(
+      quantitySelectorElement
+    ).toHaveValue('3');
+
+    const addToCartButton = screen.getByTestId('add-to-cart-button');
+    await user.click(addToCartButton);
+
+    expect(axios.post).toHaveBeenCalledWith(
+      '/api/cart-items',
+      {
+        productId: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
+        quantity: 1
+      }
+    );
+
+    expect(loadCart).toHaveBeenCalled();
   });
 });

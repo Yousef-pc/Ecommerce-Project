@@ -51,7 +51,7 @@ describe('HomePage component', () => {
         <HomePage cart={[]} loadCart={loadCart} />
       </MemoryRouter>
     );
-    const productContainers = await screen.findAllByTestId('product-container') // We use findAllByTestId instead of getAllByTestId because at the beginning the products aren't available yet. so by using findAllByTestId we wait for the products to be loaded, rendered and then we caan find them. We also have to use async/await because this code is asynchronous.
+    const productContainers = await screen.findAllByTestId('product-container'); // We use findAllByTestId instead of getAllByTestId because at the beginning the products aren't available yet. so by using findAllByTestId we wait for the products to be loaded, rendered and then we caan find them. We also have to use async/await because this code is asynchronous.
 
     expect(productContainers.length).toBe(2);
 
@@ -64,5 +64,51 @@ describe('HomePage component', () => {
       within(productContainers[1])
         .getByText('Intermediate Size Basketball')
     ).toBeInTheDocument();
+  });
+
+  it('works correctly ith all add to cart buttons', async () => {
+    render(
+      <MemoryRouter>
+        <HomePage cart={[]} loadCart={loadCart} />
+      </MemoryRouter>
+    );
+
+    const user = userEvent.setup();
+
+    const productContainers = await screen.findAllByTestId('product-container');
+
+    const quantitySelectorElements = screen.getAllByTestId('quantity-selector');
+    await user.selectOptions(quantitySelectorElements[0], '2');
+    await user.selectOptions(quantitySelectorElements[1], '3');
+
+    let addToCartButton = within(productContainers[0])
+      .getByTestId('add-to-cart-button');
+
+    await user.click(addToCartButton);
+
+    addToCartButton = within(productContainers[1])
+      .getByTestId('add-to-cart-button');
+
+    await user.click(addToCartButton);
+
+    expect(
+      axios.post
+    ).toHaveBeenNthCalledWith(1,
+      '/api/cart-items',
+      {
+        productId: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
+        quantity: 2
+      }
+    );
+
+    expect(
+      axios.post
+    ).toHaveBeenNthCalledWith(2,
+      '/api/cart-items',
+      {
+        productId: '15b6fc6f-327a-4ec4-896f-486349e85a3d',
+        quantity: 3
+      }
+    );
   });
 });

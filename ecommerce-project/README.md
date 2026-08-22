@@ -53,3 +53,15 @@ In this lesson (9):
 5. Test a component (using render and screen)  
 6. Mock = fake version of a function / package  
 7. Mock the implementation = make a mock do whatever we want
+
+
+In this lesson (10):
+
+1. AWS = collection of services that put stuff on the Internet  
+2. EC2 = rent computer from AWS (IaaS)  
+3. Elastic Beanstalk = sets up all the software (PaaS)  
+4. Put our backend on the Internet  
+5. Build and optimize the frontend, put it on the Internet  
+6. How to deploy React without a backend  
+7. Added a load balancer and database  
+8. Set up domain name, SSL certificate, and HTTPS
